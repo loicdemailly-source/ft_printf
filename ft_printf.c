@@ -6,7 +6,7 @@
 /*   By: ldemaill <ldemaill@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/26 10:54:11 by ldemaill          #+#    #+#             */
-/*   Updated: 2025/12/01 14:26:15 by ldemaill         ###   ########.fr       */
+/*   Updated: 2025/12/01 16:12:49 by ldemaill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 
 static int	ft_params_c_s_d_i_u(const char str, va_list arg);
 static int	ft_params_x_p(const char st, va_list a);
+static int	ft_params_adress(va_list arguments);
 
 int	ft_printf(const char *str, ...)
 {
@@ -81,21 +82,36 @@ static int	ft_params_x_p(const char st, va_list a)
 	{
 		output = ft_itoa(va_arg(a, unsigned int), "0123456789ABCDEF");
 		count = ft_putstr_nil_fd(output, 1);
+		free(output);
 	}
 	if (st == 'x')
 	{
 		output = ft_itoa(va_arg(a, unsigned int), "0123456789abcdef");
 		count = ft_putstr_nil_fd(output, 1);
+		free(output);
 	}
 	if (st == 'p')
+		count = ft_params_adress(a);
+	return (count);
+}
+
+static int	ft_params_adress(va_list arguments)
+{
+	size_t	count;
+	char	*output;
+	void	*temp;
+
+	count = 0;
+	temp = va_arg(arguments, void *);
+	if (!temp)
+		count += ft_putstr_nil_fd(temp, 1);
+	else
 	{
-		// if (!va_arg(a, void*))
-		// 	return (count);
-		output = ft_itoa((unsigned long)va_arg(a, void *), "0123456789abcdef");
+		output = ft_itoa((unsigned long)temp, "0123456789abcdef");
 		count = ft_putstr_nil_fd("0x", 1);
 		count += ft_putstr_nil_fd(output, 1);
+		free(output);
 	}
-	free(output);
 	return (count);
 }
 
@@ -106,7 +122,7 @@ int	main()
 	const char	s[] = "%%%%";
 	unsigned int	u = 564865123;
 	int			d = -51646531;
-	void		*p = &u;
+	void		*p = LONG_MIN;
 
 	ft_printf("mon ft_printf\n");
 	ft_printf("nb of char = %d\n", ft_printf("impression de string = %s\nnombre = %d\nnombre unsigned = %u\nImpression adresse memoire = %p\n", s, d, u, p));

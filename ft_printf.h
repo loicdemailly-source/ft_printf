@@ -26,7 +26,4 @@ int		ft_putstr_fd(char *s, int fd);
 int		ft_putstr_nil_fd(char *s, int fd);
 char	*ft_strdup(const char *s);
 size_t	ft_strlen(const char *str);
-char	*ft_strmapi(char const *s, char (*f)(unsigned int, char));
-int		ft_tolower(int c);
-int		ft_toupper(int c);
 #endif
