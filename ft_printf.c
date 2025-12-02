@@ -6,7 +6,7 @@
 /*   By: ldemaill <ldemaill@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/26 10:54:11 by ldemaill          #+#    #+#             */
-/*   Updated: 2025/12/01 16:12:49 by ldemaill         ###   ########.fr       */
+/*   Updated: 2025/12/02 10:44:05 by ldemaill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -99,10 +99,10 @@ static int	ft_params_adress(va_list arguments)
 {
 	size_t	count;
 	char	*output;
-	void	*temp;
+	char	*temp;
 
 	count = 0;
-	temp = va_arg(arguments, void *);
+	temp = va_arg(arguments, char *);
 	if (!temp)
 		count += ft_putstr_nil_fd(temp, 1);
 	else
@@ -115,20 +115,25 @@ static int	ft_params_adress(va_list arguments)
 	return (count);
 }
 
-#include <limits.h>
-#include <stdio.h>
-int	main()
-{
-	const char	s[] = "%%%%";
-	unsigned int	u = 564865123;
-	int			d = -51646531;
-	void		*p = LONG_MIN;
+// #include <stdio.h>
 
-	ft_printf("mon ft_printf\n");
-	ft_printf("nb of char = %d\n", ft_printf("impression de string = %s\nnombre = %d\nnombre unsigned = %u\nImpression adresse memoire = %p\n", s, d, u, p));
-	ft_printf("\n");
-	ft_printf("\n");
-	ft_printf("vrai printf\n");
-	printf("nb of char = %d\n", printf("impression de string = %s\nnombre = %d\nnombre unsigned = %u\nImpression adresse memoire = %p\n", s, d, u, p));
-	return (0);
-}
+// int	main(void)
+// {
+// 	const char		*s;
+// 	unsigned int	u;
+// 	int				d;
+// 	void			*p;
+
+// 	s = "%%%%";
+// 	u = 564865123;
+// 	d = -92233724;
+// 	p = &d;
+// 	ft_printf("****** mon ft_printf ******\n");
+// 	ft_printf("c=%d\n", ft_printf("s=%s\nn=%d\nun=%u\nm=%p\n", s, d, u, p));
+// 	ft_printf("***************************\n");
+// 	ft_printf("\n");
+// 	ft_printf("******* vrai printf *******\n");
+// 	ft_printf("c=%d\n", printf("s=%s\nn=%d\nun=%u\nm=%p\n", s, d, u, p));
+// 	ft_printf("***************************\n");
+// 	return (0);
+// }

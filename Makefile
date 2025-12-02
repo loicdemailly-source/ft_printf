@@ -1,5 +1,6 @@
 
 CC = cc
+INC = ft_printf.h
 CC_FLAGS = -Werror -Wall -Wextra
 SRC = ft_bzero.c\
 		ft_calloc.c\
@@ -16,8 +17,8 @@ NAME = libftprintf.a
 
 all: $(NAME)
 
-$(NAME) : ${OBJ} Makefile
-	ar -rcs $(NAME) $(OBJ)
+$(NAME) : ${OBJ} Makefile $(INC)
+	ar -rcs $(NAME) $(OBJ) $(INC)
 
 %.o: %.c 
 	$(CC) $(CC_FLAGS) -c $< -o $@
@@ -26,7 +27,7 @@ clean:
 	$(RM) -rf $(OBJ)
 
 fclean: clean
-	$(RM) $(NAME)
+	$(RM) -rf $(NAME) a.out
 
 re: fclean all
 
