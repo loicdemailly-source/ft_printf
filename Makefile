@@ -9,7 +9,7 @@ SRC = ft_bzero.c\
 		ft_putchar_fd.c\
 		ft_putstr_fd.c\
 		ft_putstr_nil_fd.c\
-		ft_strdup.c\
+		ft_uitoa.c\
 		ft_strlen.c
 
 OBJ = $(SRC:.c=.o)

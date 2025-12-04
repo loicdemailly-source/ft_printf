@@ -6,7 +6,7 @@
 /*   By: ldemaill <ldemaill@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/26 10:54:11 by ldemaill          #+#    #+#             */
-/*   Updated: 2025/12/02 14:42:26 by ldemaill         ###   ########.fr       */
+/*   Updated: 2025/12/04 14:18:39 by ldemaill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,32 +15,62 @@
 static int	ft_params_c_s_d_i_u(const char str, va_list arg);
 static int	ft_params_x_p(const char st, va_list a);
 static int	ft_params_adress(va_list arguments);
+static int	ft_sort_params(const char s, va_list ar);
 
 int	ft_printf(const char *str, ...)
 {
 	size_t	i;
-	size_t	count;
+	ssize_t	count;
 	va_list	arguments;
 
 	va_start(arguments, str);
 	count = 0;
 	i = 0;
+	if (!str)
+		return (-1);
 	while (str[i])
 	{
 		if (str[i] == '%')
 		{
 			i++;
-			if (str[i] == 'c' || str[i] == 's' || str[i] == '%' || str[i] == 'd'
-				|| str[i] == 'i' || str[i] == 'u')
-				count += ft_params_c_s_d_i_u(str[i], arguments);
-			if (str[i] == 'X' || str[i] == 'x' || str[i] == 'p')
-				count += ft_params_x_p(str[i], arguments);
+			count += ft_sort_params(str[i], arguments);
+			if (count == -1)
+				return (-1);
 		}
 		else
 			count += write(1, &str[i], 1);
 		i++;
 	}
 	va_end(arguments);
+	return (count);
+}
+
+static int	ft_sort_params(const char s, va_list ar)
+{
+	ssize_t	count;
+	int		check;
+
+	count = 0;
+	if (s == 'c' || s == 's' || s == '%' || s == 'd'
+		|| s == 'i' || s == 'u')
+	{
+		check = ft_params_c_s_d_i_u(s, ar);
+		if (check == -1)
+			return (-1);
+		count = check;
+	}
+	else if (s == 'X' || s == 'x' || s == 'p')
+	{
+		check = ft_params_x_p(s, ar);
+		if (check == -1)
+			return (-1);
+		count = check;
+	}
+	else
+	{
+		count += ft_putchar_fd('%', 1);
+		count += ft_putchar_fd(s, 1);
+	}
 	return (count);
 }
 
@@ -107,7 +137,7 @@ static int	ft_params_adress(va_list arguments)
 		count += ft_putstr_nil_fd(temp, 1);
 	else
 	{
-		output = ft_itoa((unsigned long)temp, "0123456789abcdef");
+		output = ft_uitoa((uintptr_t)temp, "0123456789abcdef");
 		count = ft_putstr_nil_fd("0x", 1);
 		count += ft_putstr_nil_fd(output, 1);
 		free(output);
@@ -123,17 +153,22 @@ static int	ft_params_adress(va_list arguments)
 // 	unsigned int	u;
 // 	int				d;
 // 	void			*p;
+// 	int				count;
+// 	int				y;
 
 // 	s = "%%%%";
-// 	u = 564865123;
+// 	u = 548763544;
 // 	d = -92233724;
 // 	p = &d;
-// 	ft_printf("****** mon ft_printf ******\n");
-// 	ft_printf("c=%d\n", ft_printf("s=%s\nn=%d\nun=%u\nm=%p\n", s, d, u, p));
+// 	y = d;
+// 	ft_printf("******* vrai printf *******\n");
+// 	count = printf("s=%s\nu=%u\nd=%d\nmem=%p\n", s, u, d, p);
+// 	printf("           %d\n", count);
 // 	ft_printf("***************************\n");
 // 	ft_printf("\n");
-// 	ft_printf("******* vrai printf *******\n");
-// 	ft_printf("c=%d\n", printf("s=%s\nn=%d\nun=%u\nm=%p\n", s, d, u, p));
+// 	ft_printf("****** mon ft_printf ******\n");
+// 	count = ft_printf("s=%s\nu=%u\nd=%d\nmem=%p\n", s, u, d, p);
+// 	printf("           %d\n", count);
 // 	ft_printf("***************************\n");
 // 	return (0);
 // }
