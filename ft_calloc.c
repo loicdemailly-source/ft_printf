@@ -6,7 +6,7 @@
 /*   By: ldemaill <ldemaill@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/17 07:44:06 by ldemaill          #+#    #+#             */
-/*   Updated: 2025/12/01 11:49:28 by ldemaill         ###   ########.fr       */
+/*   Updated: 2025/12/08 17:32:56 by ldemaill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ void	*ft_calloc(size_t nmemb, size_t size)
 	size_t	i;
 
 	i = (nmemb * size);
-	if (nmemb != 0)
+	if (nmemb != 0 || size != 0)
 	{
 		if (i / nmemb != size)
 			return (0);

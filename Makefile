@@ -1,7 +1,7 @@
 
 CC = cc
 INC = ft_printf.h
-CC_FLAGS = -Werror -Wall -Wextra
+# CC_FLAGS = -Werror -Wall -Wextra -MM -MD
 SRC = ft_bzero.c\
 		ft_calloc.c\
 		ft_itoa.c\
@@ -13,6 +13,7 @@ SRC = ft_bzero.c\
 		ft_strlen.c
 
 OBJ = $(SRC:.c=.o)
+DEP = $(SRC:.c=.d)
 NAME = libftprintf.a
 
 all: $(NAME)
@@ -20,15 +21,17 @@ all: $(NAME)
 $(NAME) : ${OBJ} Makefile $(INC)
 	ar -rcs $(NAME) $(OBJ) $(INC)
 
-%.o: %.c 
+%.o: %.c $(INC)
 	$(CC) $(CC_FLAGS) -c $< -o $@
 
 clean:
 	$(RM) -rf $(OBJ)
 
 fclean: clean
-	$(RM) -rf $(NAME) a.out
+	$(RM) -rf $(NAME) a.out $(DEP)
 
 re: fclean all
 
 .PHONY: all clean fclean re
+
+-include $(DEP)

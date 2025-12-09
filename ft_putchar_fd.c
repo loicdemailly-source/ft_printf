@@ -6,11 +6,11 @@
 /*   By: ldemaill <ldemaill@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/19 15:58:43 by ldemaill          #+#    #+#             */
-/*   Updated: 2025/12/01 11:28:36 by ldemaill         ###   ########.fr       */
+/*   Updated: 2025/12/09 16:06:01 by ldemaill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_printf.h"
+#include <unistd.h>
 
 int	ft_putchar_fd(char c, int fd)
 {

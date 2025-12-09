@@ -6,11 +6,11 @@
 /*   By: ldemaill <ldemaill@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/10 18:38:03 by ldemaill          #+#    #+#             */
-/*   Updated: 2025/12/01 09:48:20 by ldemaill         ###   ########.fr       */
+/*   Updated: 2025/12/09 16:30:12 by ldemaill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_printf.h"
+#include <stddef.h>
 
 void	ft_bzero(void *s, size_t n)
 {

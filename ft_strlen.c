@@ -6,11 +6,11 @@
 /*   By: ldemaill <ldemaill@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/10 15:46:39 by ldemaill          #+#    #+#             */
-/*   Updated: 2025/12/01 11:49:53 by ldemaill         ###   ########.fr       */
+/*   Updated: 2025/12/09 16:30:17 by ldemaill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_printf.h"
+#include <stddef.h>
 
 size_t	ft_strlen(const char *str)
 {
