@@ -1,7 +1,7 @@
 
 CC = cc
 INC = ft_printf.h
-# CC_FLAGS = -Werror -Wall -Wextra -MM -MD
+CC_FLAGS = -Werror -Wall -Wextra -MM -MD
 SRC = ft_bzero.c\
 		ft_calloc.c\
 		ft_itoa.c\
