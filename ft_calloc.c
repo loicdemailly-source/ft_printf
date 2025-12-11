@@ -6,7 +6,7 @@
 /*   By: ldemaill <ldemaill@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/17 07:44:06 by ldemaill          #+#    #+#             */
-/*   Updated: 2025/12/08 17:32:56 by ldemaill         ###   ########.fr       */
+/*   Updated: 2025/12/10 17:08:28 by ldemaill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,4 +29,18 @@ void	*ft_calloc(size_t nmemb, size_t size)
 		return (NULL);
 	ft_bzero(dest, i);
 	return (dest);
+}
+
+void	ft_bzero(void *s, size_t n)
+{
+	size_t	i;
+	char	*str;
+
+	i = 0;
+	str = (char *)s;
+	while (i < n && n != 0)
+	{
+		str[i] = '\0';
+		i++;
+	}
 }

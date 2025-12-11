@@ -1,16 +1,11 @@
 
 CC = cc
 INC = ft_printf.h
-CC_FLAGS = -Werror -Wall -Wextra -MM -MD
-SRC = ft_bzero.c\
-		ft_calloc.c\
+CC_FLAGS = -Werror -Wall -Wextra -MMD -MP
+SRC = ft_calloc.c\
 		ft_itoa.c\
 		ft_printf.c\
-		ft_putchar_fd.c\
-		ft_putstr_fd.c\
-		ft_putstr_nil_fd.c\
-		ft_uitoa.c\
-		ft_strlen.c
+		ft_putstr_fd.c
 
 OBJ = $(SRC:.c=.o)
 DEP = $(SRC:.c=.d)
