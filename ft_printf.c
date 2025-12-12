@@ -6,7 +6,7 @@
 /*   By: ldemaill <ldemaill@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/26 10:54:11 by ldemaill          #+#    #+#             */
-/*   Updated: 2025/12/11 08:52:13 by ldemaill         ###   ########.fr       */
+/*   Updated: 2025/12/12 12:45:28 by ldemaill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,6 +51,7 @@ static int	ft_sort_params(const char s, va_list ar)
 	int		check;
 
 	count = 0;
+	check = 0;
 	if (s == 'c' || s == 's' || s == '%' || s == 'd'
 		|| s == 'i' || s == 'u')
 	{
