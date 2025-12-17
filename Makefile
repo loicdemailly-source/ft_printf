@@ -5,7 +5,7 @@ CC_FLAGS = -Werror -Wall -Wextra -MMD -MP
 SRC = ft_calloc.c\
 		ft_itoa.c\
 		ft_printf.c\
-		ft_putstr_fd.c
+		ft_putstr.c
 
 OBJ = $(SRC:.c=.o)
 DEP = $(SRC:.c=.d)
